@@ -7,7 +7,7 @@ let date = new Date()
 let dateFormat = `${date.getFullYear()}-${date.getDay()}-${date.getMonth() + 1} ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`
 let queue = housecall({
   concurrency: 1,
-  cooldown: 800
+  cooldown: 900
 })
 
 let devDB = `mongodb://127.0.0.1:27017/asphaltgold`
