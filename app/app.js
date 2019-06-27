@@ -5,9 +5,15 @@ const Products = require('./models/product')
 const housecall = require('housecall')
 let date = new Date()
 let dateFormat = `${date.getFullYear()}-${date.getDay()}-${date.getMonth() + 1} ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`
+
+// RATE LIMITS
+// 3 => 800
+// 2 => 1400
+// 1 => 1800
+
 let queue = housecall({
   concurrency: 1,
-  cooldown: 1000
+  cooldown: 1400
 })
 
 let devDB = `mongodb://127.0.0.1:27017/asphaltgold`
