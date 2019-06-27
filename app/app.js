@@ -7,7 +7,7 @@ let date = new Date()
 let dateFormat = `${date.getFullYear()}-${date.getDay()}-${date.getMonth() + 1} ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`
 let queue = housecall({
   concurrency: 1,
-  cooldown: 700
+  cooldown: 800
 })
 
 let devDB = `mongodb://127.0.0.1:27017/asphaltgold`
@@ -20,7 +20,8 @@ mongoose.connect(prodDB, {
 mongoose.Promise = global.Promise;
 
 var webHookURLs = [
-    'https://discordapp.com/api/webhooks/593641508280729608/63yw9NFXVpOqwxLVQoyTt03GMrra3H7kKttpURkTNA2YGrqcv0ivVi_RPBlm9LA0LJot'
+    'https://discordapp.com/api/webhooks/593641508280729608/63yw9NFXVpOqwxLVQoyTt03GMrra3H7kKttpURkTNA2YGrqcv0ivVi_RPBlm9LA0LJot',
+    'https://discordapp.com/api/webhooks/593697321737519116/zY_uXYD0U_5JHB36_9xY2UwtJU66MbgEOnvqyAhHi4zrqRWi_VoNdBKYJTL8fBJ8NC-q'
 ]
 
 async function sendDicordWebhook(embedData) {
@@ -31,6 +32,23 @@ async function sendDicordWebhook(embedData) {
         console.log('Message sent!')
     } 
 }
+
+docker run \
+  --volume=/var/run/docker.sock:/var/run/docker.sock \
+  --volume=/var/lib/drone:/data \
+  --env=DRONE_GITHUB_SERVER=https://github.com \
+  --env=DRONE_GITHUB_CLIENT_ID={% your-github-client-id %} \
+  --env=DRONE_GITHUB_CLIENT_SECRET={% your-github-client-secret %} \
+  --env=DRONE_RUNNER_CAPACITY=2 \
+  --env=DRONE_SERVER_HOST={% your-drone-server-host %} \
+  --env=DRONE_SERVER_PROTO={% your-drone-server-protocol %} \
+  --env=DRONE_TLS_AUTOCERT=true \
+  --publish=80:80 \
+  --publish=443:443 \
+  --restart=always \
+  --detach=true \
+  --name=drone \
+  drone/drone:1
 
 startmonitor()
 
