@@ -20,8 +20,8 @@ mongoose.connect(prodDB, {
 mongoose.Promise = global.Promise;
 
 var webHookURLs = [
-    'https://discordapp.com/api/webhooks/593641508280729608/63yw9NFXVpOqwxLVQoyTt03GMrra3H7kKttpURkTNA2YGrqcv0ivVi_RPBlm9LA0LJot',
-    'https://discordapp.com/api/webhooks/593697321737519116/zY_uXYD0U_5JHB36_9xY2UwtJU66MbgEOnvqyAhHi4zrqRWi_VoNdBKYJTL8fBJ8NC-q'
+    'https://discordapp.com/api/webhooks/593641508280729608/63yw9NFXVpOqwxLVQoyTt03GMrra3H7kKttpURkTNA2YGrqcv0ivVi_RPBlm9LA0LJot', //Test
+    'https://discordapp.com/api/webhooks/593699375776137216/Zo2AqcHlnzzoEa6IfI7dZ2DvGnJDnPr3xzWjsEApUYvlWi49nTGcIWlNhn16VxiHe1Ud' // Doghouse
 ]
 
 async function sendDicordWebhook(embedData) {
