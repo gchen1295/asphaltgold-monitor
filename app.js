@@ -10,7 +10,10 @@ let queue = housecall({
   cooldown: 700
 })
 
-mongoose.connect(`mongodb://127.0.0.1:27017/asphaltgold`, {
+let devDB = `mongodb://127.0.0.1:27017/asphaltgold`
+let prodDB = `mongodb://"172.17.0.2/asphaltgold`
+
+mongoose.connect(prodDB, {
     useNewUrlParser: true,
     useCreateIndex: true
 })
