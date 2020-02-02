@@ -17,7 +17,6 @@ let queue = housecall({
 })
 
 let devDB = `mongodb://127.0.0.1:27017/asphaltgold`
-let prodDB = `mongodb://172.17.0.2/asphaltgold`
 
 mongoose.connect(prodDB, {
   useNewUrlParser: true,
@@ -26,8 +25,6 @@ mongoose.connect(prodDB, {
 mongoose.Promise = global.Promise;
 
 var webHookURLs = [
-  'https://discordapp.com/api/webhooks/593641508280729608/63yw9NFXVpOqwxLVQoyTt03GMrra3H7kKttpURkTNA2YGrqcv0ivVi_RPBlm9LA0LJot', //Test
-  'https://discordapp.com/api/webhooks/593699375776137216/Zo2AqcHlnzzoEa6IfI7dZ2DvGnJDnPr3xzWjsEApUYvlWi49nTGcIWlNhn16VxiHe1Ud' // Doghouse
 ]
 
 async function sendDicordWebhook(embedData) {
